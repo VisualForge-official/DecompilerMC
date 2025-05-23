@@ -1,7 +1,7 @@
 # DecompilerMC
 A utility for VisualForge which helps generate minecraft source code locally without violating EULA
 
-#⚠️ Legal Disclaimer
+# ⚠ Legal Disclaimer
 
 This application is an independent project and is not affiliated with Mojang Studios or Microsoft Corporation. It utilizes Mojang's publicly available APIs to allow users to download official Minecraft files directly from Mojang's servers.
 
