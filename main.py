@@ -27,7 +27,7 @@ CLIENT = "client"
 SERVER = "server"
 SideType: TypeAlias = Literal['client', 'server']
 PATH_TO_ROOT_DIR = Path(os.path.dirname(sys.argv[0]))
-JAVA_CMD = which("java") or "java"
+java_cmd = which("java") or "java"
 
 
 def get_minecraft_path() -> Path:
@@ -333,7 +333,7 @@ def decompile_fern_flower(decompiled_version: str, version: str, side: SideType,
     fernflower = fernflower.resolve()
 
     side_folder = (PATH_TO_ROOT_DIR / "src" / decompiled_version / side)
-    subprocess.run([JAVA_CMD,
+    subprocess.run([java_cmd,
                     '-Xmx4G',
                     '-Xms1G',
                     '-jar', fernflower.__str__(),
@@ -381,7 +381,7 @@ def decompile_cfr(decompiled_version: str, version: str, side: SideType, quiet) 
     cfr = cfr.resolve()
 
     side_folder = (PATH_TO_ROOT_DIR / "src" / decompiled_version / side)
-    subprocess.run([JAVA_CMD,
+    subprocess.run([java_cmd,
                     '-Xmx4G',
                     '-Xms1G',
                     '-jar', cfr.__str__(),
