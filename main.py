@@ -18,7 +18,7 @@ from subprocess import CalledProcessError
 from typing import Literal, TypeAlias, Union
 from urllib.error import HTTPError, URLError
 
-if sys.version_info < (3, 7): raise OSError("Python verson must be 3.7 or above.")
+if sys.version_info < (3, 7): raise OSError("Python version must be 3.7 or above.")
 
 CFR_VERSION = "0.152"
 SPECIAL_SOURCE_VERSION = "1.11.4"
@@ -27,6 +27,7 @@ CLIENT = "client"
 SERVER = "server"
 SideType: TypeAlias = Literal['client', 'server']
 PATH_TO_ROOT_DIR = Path(os.path.dirname(sys.argv[0]))
+JAVA_CMD = which("java") or "java"
 
 
 def get_minecraft_path() -> Path:
@@ -332,7 +333,7 @@ def decompile_fern_flower(decompiled_version: str, version: str, side: SideType,
     fernflower = fernflower.resolve()
 
     side_folder = (PATH_TO_ROOT_DIR / "src" / decompiled_version / side)
-    subprocess.run(['java',
+    subprocess.run([JAVA_CMD,
                     '-Xmx4G',
                     '-Xms1G',
                     '-jar', fernflower.__str__(),
@@ -380,7 +381,7 @@ def decompile_cfr(decompiled_version: str, version: str, side: SideType, quiet) 
     cfr = cfr.resolve()
 
     side_folder = (PATH_TO_ROOT_DIR / "src" / decompiled_version / side)
-    subprocess.run(['java',
+    subprocess.run([JAVA_CMD,
                     '-Xmx4G',
                     '-Xms1G',
                     '-jar', cfr.__str__(),
